@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reviews</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/reviewCSS.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-box">
+            <div class="logo">SM</div>
+            <div th:if="${loggedInUser != null}" class="user-info">
+                <h2>Welcome, <span th:text="${loggedInUser}"></span>!</h2>
+                <form th:action="@{/logout}" method="post">
+                    <input type="hidden" name="redirectUrl" th:value="'/reviews/' + ${shoeNum}"/>
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+            <div th:if="${loggedInUser == null}" class="login-form">
+                <h2>Login to leave a review</h2>
+                <a th:href="@{/login}" class="button">Login</a>
+            </div>
+        </div>
+        <div class="right-box">
+            <h2>Reviews for Shoe <span th:text="${shoeNum}"></span></h2>
+            <div class="reviews-container">
+                <div th:each="review : ${reviews}" class="review-box">
+                    <p><strong>User:</strong> <span th:text="${review.username}"></span></p>
+                    <p><strong>Date:</strong> <span th:text="${review.reviewDate}"></span></p>
+                    <p><strong>Review:</strong> <span th:text="${review.reviewText}"></span></p>
+                </div>
+            </div>
+            <div th:if="${loggedInUser != null}" class="review-form">
+                <h3>Add a Review</h3>
+                <form th:action="@{/reviews/{shoeNum}(shoeNum=${shoeNum})}" method="post">
+                    <textarea name="reviewText" rows="4" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div th:if="${loggedInUser == null}">
+                <p>Please <a th:href="@{/login}">login</a> to leave a review.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
