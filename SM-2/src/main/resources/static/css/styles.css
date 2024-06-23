@@ -1,0 +1,225 @@
+/* 기존 스타일 여기에 포함 */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* 연한 회색 배경색 */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.left-box {
+    background-color: mintcream;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 맨 위로 위치하게 */
+    align-items: center;
+    padding-top: 20px;
+    transition: all 0.5s ease;
+    position: fixed;
+    height: 100%;
+    overflow: hidden; /* 왼쪽 박스 스크롤 방지 */
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: darkslategray;
+    margin-bottom: 20px; /* 로고와 로그인 폼 사이의 간격 */
+}
+
+.right-box {
+    width: 75%;
+    margin-left: 25%; /* 왼쪽 박스의 너비만큼 여백 추가 */
+    overflow-y: auto; /* 오른쪽 박스만 스크롤 가능 */
+    padding: 20px; /* 오른쪽 박스 내용에 여백 추가 */
+}
+
+.header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.login-button, .home-button {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.brand-logo-box {
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 입체감 주기 위해 그림자 추가 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px; /* 박스 크기 줄임 */
+    width: 120px;
+    margin-top: 20px; /* 로고 박스와 맨 위 사이의 간격 */
+    margin-bottom: 20px; /* 로고 박스와 나머지 콘텐츠 사이의 간격 */
+}
+
+.brand-logo-img {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.main-logo-text {
+    font-size: 2em;
+    color: darkslategray;
+}
+
+.back-button {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.login-form, .signup-form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login-form h2, .signup-form h2 {
+    margin-bottom: 20px;
+}
+
+.login-form form, .signup-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form label, .signup-form label {
+    margin: 10px 0 5px 0;
+}
+
+.login-form input, .signup-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.login-form button, .signup-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover, .signup-form button:hover {
+    background-color: #45a049;
+}
+
+.rounded-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.rounded-box {
+    background-color: white; /* 박스 색상 흰색 */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    color: darkslategray;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 입체감 주기 위해 그림자 추가 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rounded-box:hover {
+    transform: translateY(-5px); /* 호버 시 입체감 증가 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: darkslategray;
+}
+
+.shoe-image-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    overflow: hidden;
+}
+
+.shoe-image {
+    max-height: 80%;
+    max-width: 80%;
+    position: absolute;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.shoe-image.slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+.shoe-image.slide-out {
+    animation: slideOut 0.5s forwards;
+}
