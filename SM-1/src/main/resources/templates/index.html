@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-box" id="left-box">
+            <div class="logo">SM</div>
+            <div class="login-form" id="login-form">
+                <h2>Login</h2>
+                <form th:action="@{/login}" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <div class="form-buttons">
+                        <button type="submit">Login</button>
+                        <button type="button" id="signup-button">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-form" id="signup-form" style="display: none;">
+                <h2>Sign Up</h2>
+                <form th:action="@{/signup}" method="post">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" name="username" required>
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" required>
+                    <label for="signup-password-confirm">Confirm Password:</label>
+                    <input type="password" id="signup-password-confirm" name="passwordConfirm" required>
+                    <label for="signup-grade">Grade:</label>
+                    <input type="text" id="signup-grade" name="grade">
+                    <label for="signup-likes">Likes:</label>
+                    <input type="number" id="signup-likes" name="likes">
+                    <div class="form-buttons">
+                        <button type="submit">Sign Up</button>
+                        <button type="button" id="cancel-signup-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="header-buttons">
+                <div class="login-button" id="login-button">👤 Login</div>
+                <div class="home-button" id="home-button">🏠 Home</div>
+            </div>
+            <div class="rounded-boxes">
+                <a href="/nike" class="rounded-box nike-box">
+                    <div class="brand-container">
+                        <img src="images/nike/logo.png" alt="Nike Logo" class="brand-logo">
+                        <span class="brand-name">Nike</span>
+                    </div>
+                    <div class="shoe-image-container">
+                        <img src="images/nike/shoe1.png" alt="Nike Shoe" class="shoe-image">
+                    </div>
+                </a>
+                <a href="/adidas" class="rounded-box adidas-box">
+                    <div class="brand-container">
+                        <img src="images/adidas/logo.png" alt="Adidas Logo" class="brand-logo">
+                        <span class="brand-name">Adidas</span>
+                    </div>
+                    <div class="shoe-image-container">
+                        <img src="images/adidas/shoe1.png" alt="Adidas Shoe" class="shoe-image">
+                    </div>
+                </a>
+                <a href="/converse" class="rounded-box converse-box">
+                    <div class="brand-container">
+                        <img src="images/converse/logo.png" alt="Converse Logo" class="brand-logo">
+                        <span class="brand-name">Converse</span>
+                    </div>
+                    <div class="shoe-image-container">
+                        <img src="images/converse/shoe1.png" alt="Converse Shoe" class="shoe-image">
+                    </div>
+                </a>
+                <a href="/nb" class="rounded-box nb-box">
+                    <div class="brand-container">
+                        <img src="images/nb/logo.png" alt="NB Logo" class="brand-logo">
+                        <span class="brand-name">New Balance</span>
+                    </div>
+                    <div class="shoe-image-container">
+                        <img src="images/nb/shoe1.png" alt="NB Shoe" class="shoe-image">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="back-button" id="back-button">&lt;</div>
+    </div>
+    <script>
+        document.getElementById("signup-button").addEventListener("click", function() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("signup-form").style.display = "block";
+        });
+        document.getElementById("cancel-signup-button").addEventListener("click", function() {
+            document.getElementById("signup-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        });
+
+        // 알림 메시지를 표시하는 함수
+        function showAlert(message) {
+            if (message) {
+                alert(message);
+            }
+        }
+
+        // 서버에서 전달된 플래시 메시지를 확인하고 알림창으로 표시
+        const successMessage = /*[[${successMessage}]]*/ null;
+        const errorMessage = /*[[${errorMessage}]]*/ null;
+        
+        showAlert(successMessage);
+        showAlert(errorMessage);
+    </script>
+</body>
+</html>

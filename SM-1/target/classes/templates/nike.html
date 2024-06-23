@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nike Page</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-box" id="left-box">
+            <div class="logo">Nike</div>
+            <div class="login-form" id="login-form">
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <div class="form-buttons">
+                        <button type="submit">Login</button>
+                        <button type="button" id="signup-button">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-form" id="signup-form">
+                <h2>Sign Up</h2>
+                <form>
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" name="signup-username">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="signup-password">
+                    <div class="form-buttons">
+                        <button type="submit">Sign Up</button>
+                        <button type="button" id="cancel-signup-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="header-buttons">
+                <div class="login-button" id="login-button">👤 Login</div>
+                <div class="home-button" id="home-button" href="/">🏠 Home</div>
+            </div>
+            <div class="brand-logo-box">
+                <img src="images/nike/logo.png" alt="Nike Logo" class="brand-logo-img">
+            </div>
+            <div class="shoe-list">
+                <div class="shoe-box" th:each="shoe : ${shoes}">
+                    <img th:src="@{${shoe.imageUrl}}" alt="Shoe Image" class="shoe-image">
+                    <div class="shoe-details">
+                        <h3 th:text="${shoe.name}">Shoe Name</h3>
+                        <p th:text="'Price: $' + ${shoe.price}">Price</p>
+                        <p th:text="'Rating: ' + ${shoe.rating}">Rating</p>
+                        <p th:text="'Likes: ' + ${shoe.likes}">Likes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="back-button" id="back-button">&lt;</div>
+    </div>
+</body>
+</html>
