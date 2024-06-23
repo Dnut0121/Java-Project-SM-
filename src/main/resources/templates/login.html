@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-box" id="left-box">
+            <div class="logo">SM</div>
+            <div class="login-form" id="login-form">
+                <h2>로그인</h2>
+                <form>
+                    <label for="username">유저이름:</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">비밀번호:</label>
+                    <input type="password" id="password" name="password">
+                    <div class="form-buttons">
+                        <button type="submit">Login</button>
+                        <a href="/signup" class="button">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="back-button" id="back-button">&lt;</div>
+    </div>
+</body>
+</html>
